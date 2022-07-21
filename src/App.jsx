@@ -1,8 +1,13 @@
 import React from 'react';
 
+import { AuthProvider } from './contexts/authContext';
+import InnerApp from './InnerApp';
+
 function App () {
   return (
-    <div>Hi</div>
+    <AuthProvider>
+      <InnerApp/>
+    </AuthProvider>
   );
 }
 
