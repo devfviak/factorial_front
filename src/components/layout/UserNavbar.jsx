@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBarItem from './NavBarItem';
+import UserNavBarItem from './UserNavBarItem';
 import factorialLogo from '../../assets/factorial-logo.svg';
 
 import {
@@ -10,7 +10,7 @@ import {
   DocumentIcon
 } from '@heroicons/react/solid';
 
-function UserNavbar ({ user }) {
+function UserNavbar () {
   return (
     <div className='flex flex-col items-start px-2 py-3'>
       <div className='pl-5 pb-4'>
@@ -25,23 +25,28 @@ function UserNavbar ({ user }) {
         </span>
       </div>
       <nav className='w-full'>
-        <NavBarItem
+        <UserNavBarItem
+          path='/me'
           title={'Me'}
           icon={<UserCircleIcon className='h-4 w-4'/>}
         />
-        <NavBarItem
+        <UserNavBarItem
+          path='/expenses'
           title={'Expenses'}
           icon={<CollectionIcon className='h-4 w-4'/>}
         />
-        <NavBarItem
+        <UserNavBarItem
+          path='/'
           title={'Time off'}
           icon={<GiftIcon className='h-4 w-4'/>}
         />
-        <NavBarItem
+        <UserNavBarItem
+          path='/'
           title={'Clock in'}
           icon={<ClockIcon className='h-4 w-4'/>}
         />
-        <NavBarItem
+        <UserNavBarItem
+          path='/'
           title={'My documents'}
           icon={<DocumentIcon className='h-4 w-4'/>}
         />
@@ -53,23 +58,28 @@ function UserNavbar ({ user }) {
         </span>
       </div>
       <nav className='w-full'>
-        <NavBarItem
+        <UserNavBarItem
+          path='/'
           title={'Me'}
           icon={<UserCircleIcon className='h-4 w-4'/>}
         />
-        <NavBarItem
+        <UserNavBarItem
+          path='/'
           title={'Expenses'}
           icon={<CollectionIcon className='h-4 w-4'/>}
         />
-        <NavBarItem
+        <UserNavBarItem
+          path='/'
           title={'Time off'}
           icon={<GiftIcon className='h-4 w-4'/>}
         />
-        <NavBarItem
+        <UserNavBarItem
+          path='/'
           title={'Clock in'}
           icon={<ClockIcon className='h-4 w-4'/>}
         />
-        <NavBarItem
+        <UserNavBarItem
+          path='/'
           title={'My documents'}
           icon={<DocumentIcon className='h-4 w-4'/>}
         />
