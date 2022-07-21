@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { signInUser } from '../../api/auth';
-import { useAuth } from '../../context/authContext';
+import { useAuth } from '../../contexts/authContext';
 import RoundedButton from './RoundedButton';
 import TextInput from './TextInput';
 
