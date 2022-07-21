@@ -4,18 +4,9 @@ import { camelizeObjectFromSnake, snakecaseObjectFromCamel } from './utils';
 const API_URL = import.meta.env.VITE_API_URL;
 
 const transformRequest = (data, headers) => {
-  console.log('data', data);
-  console.log('headers', headers);
-
-  if (!data || headers['Content-Type'] !== 'application/json') return {};
+  if (!data || headers['Content-Type'] !== 'application/json') return data;
 
   return JSON.stringify(snakecaseObjectFromCamel(data));
-};
-
-const transformResponse = (data, headers) => {
-  if (!data || headers['Content-Type'] !== 'application/json') return {};
-
-  return camelizeObjectFromSnake(JSON.parse(data));
 };
 
 const client = axios.create({
@@ -25,8 +16,7 @@ const client = axios.create({
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   },
-  transformRequest,
-  transformResponse
+  transformRequest
 });
 
 export default client;
