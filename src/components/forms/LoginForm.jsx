@@ -12,6 +12,8 @@ function LoginForm () {
   const [error, setError] = useState(null);
 
   const handleSubmit = () => {
+    setError(null);
+
     signInUser({ email, password })
       .then(_response => onSingIn())
       .catch(axiosError => {
@@ -26,13 +28,14 @@ function LoginForm () {
   return (
     <div className='flex flex-col flex-grow justify-start items-center w-full'>
       <div className='pb-3 w-full'>
-        <div className={`w-full bg-red-500 text-white hidden ${error && 'inline-flex'}`}>
-            <p >{error}</p>
+
+        <div className={`flex flex-row justify-center p-4 flex-grow text-red-500 font-semibold ${error ? 'flex' : 'hidden'}`}>
+          <p >{error}</p>
         </div>
 
         <div className='pb-3 w-full'>
           <TextInput
-            required={true}
+            required
             labelName="Email"
             type="email"
             inputId="email"
@@ -44,7 +47,7 @@ function LoginForm () {
 
         <div className='pb-3 w-full'>
           <TextInput
-            required={true}
+            required
             labelName="Password"
             type="password"
             inputId="password"
