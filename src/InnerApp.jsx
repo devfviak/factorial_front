@@ -4,11 +4,11 @@ import { Route, Switch } from 'wouter';
 import { useAuth } from './contexts/authContext';
 import PageLoader from './components/layout/PageLoader';
 
-import LoginPage from './pages/login';
-import RegisterPage from './pages/register';
+const LoginPage = React.lazy(() => import('./pages/login'));
+const RegisterPage = React.lazy(() => import('./pages/register'));
 
-import ProfilePage from './pages/profile';
-import ExpensesPage from './pages/expenses';
+const ProfilePage = React.lazy(() => import('./pages/profile'));
+const ExpensesPage = React.lazy(() => import('./pages/expenses'));
 
 function InnerApp () {
   const { user, loading } = useAuth();
