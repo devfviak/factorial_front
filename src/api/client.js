@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { camelizeObjectFromSnake, snakecaseObjectFromCamel } from './utils';
+import { snakecaseObjectFromCamel } from './utils';
 
 const API_URL = import.meta.env.VITE_API_URL;
 

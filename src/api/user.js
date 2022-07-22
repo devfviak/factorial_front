@@ -1,7 +1,7 @@
-const client = import('./client');
+import client from './client';
 
 export const updateUser = async (attributes) => {
-  client.put('/users', {
+  return client.put('/users', {
     user: {
       ...attributes
     }
