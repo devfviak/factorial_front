@@ -22,9 +22,9 @@ function BasicNavBar ({ isRegister = true }) {
 function RegisterSection () {
   return (
     <>
-      <p className='px-2 font-light text-gray-500 hidden md:inline-flex'>You do not have an account?</p>
+      <p className='px-2 text-sm font-light text-gray-500 hidden md:inline-flex'>You do not have an account?</p>
 
-      <a href='/register' title='Register' className='font-light cursor-pointer'>
+      <a href='/register' title='Register' className='font-light cursor-pointer text-sm'>
         Get started now
       </a>
     </>
