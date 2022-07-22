@@ -2,6 +2,10 @@
 import React from 'react';
 
 function ExpensesTable ({ expenses }) {
+  const userLocale = navigator.languages && navigator.languages.length
+    ? navigator.languages[0]
+    : navigator.language;
+
   return (
     <div className="flex flex-col mt-8">
       <div className="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -9,46 +13,46 @@ function ExpensesTable ({ expenses }) {
             <table className="min-w-full">
                 <thead>
                     <tr>
-                        <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                        <th>
                             Concept
                         </th>
-                        <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                        <th>
                             Value
                         </th>
-                        <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                            Timestamp
+                        <th>
+                            Datetime
                         </th>
-                        <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                        <th>
                             Processor
                         </th>
                     </tr>
                 </thead>
 
                 <tbody className='bg-transparent'>
-                  {expenses.map(expense => (
-                    <tr key={expense.id}>
+                  {expenses.map(({ id, concept, total, currency, timestamp, processor }) => (
+                    <tr key={id}>
                       {/* Concept */}
-                      <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                      <td>
                         <div className="text-sm leading-5 text-gray-900">
-                            {expense.concept}
+                            {concept}
                         </div>
                       </td>
                       {/* Value */}
-                      <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                      <td >
                         <div className="text-sm leading-5 text-gray-900">
-                            {expense.value_cents}
+                            {Intl.NumberFormat(userLocale, { style: 'currency', currency }).format(total)}
                         </div>
                       </td>
                       {/* Timestamp */}
-                      <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                      <td >
                         <div className="text-sm leading-5 text-gray-900">
-                          {expense.timestamp}
+                          {formattedDateTime(userLocale, timestamp)}
                         </div>
                       </td>
                       {/* Processor */}
-                      <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                      <td >
                         <div className="text-sm leading-5 text-gray-900">
-                          {expense.processor}
+                          {processor}
                         </div>
                       </td>
                     </tr>)
@@ -61,5 +65,10 @@ function ExpensesTable ({ expenses }) {
     </div>
   );
 }
+
+const formattedDateTime = (locale, seconds) => {
+  const date = new Date(seconds * 1000);
+  return Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeStyle: 'medium' }).format(date);
+};
 
 export default ExpensesTable;

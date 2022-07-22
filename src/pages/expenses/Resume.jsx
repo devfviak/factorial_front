@@ -1,6 +1,8 @@
 import React from 'react';
 import BorderedButton from '../../components/forms/BorderedButton';
 
+import { mockStripeExpense, mockApplePayExpense } from '../../api/expenses';
+
 function Resume () {
   return (
     <div className='w-full p-6 rounded-lg border shadow-md border-gray-200 flex flex-col items-center'>
@@ -10,14 +12,15 @@ function Resume () {
       </div>
 
       <div className='w-full flex flex-row items-center justify-around'>
-        <div className='w-15'>
-          <BorderedButton>
-            <p className='text-xs'>Add stripe expense</p>
+        <div className='w-15 px-2'>
+          <BorderedButton onClick={mockStripeExpense}>
+            <p className='text-[7px] sm:text-xs'>Add Stripe expense</p>
           </BorderedButton>
         </div>
-        <div className='w-15'>
-          <BorderedButton>
-            <p className='text-xs'>Add faker expense</p>
+
+        <div className='w-15 px-2'>
+          <BorderedButton onClick={mockApplePayExpense}>
+            <p className='text-[7px] sm:text-xs'>Add ApplePay expense</p>
           </BorderedButton>
         </div>
       </div>
